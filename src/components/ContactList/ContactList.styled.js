@@ -1,0 +1,15 @@
+import styled from '@emotion/styled';
+
+const ContactBox = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding: 0;
+  margin-right: auto;
+  margin-left: 50px;
+  margin-top: 0;
+  margin-bottom: 0;
+`;
+
+export { ContactBox };
