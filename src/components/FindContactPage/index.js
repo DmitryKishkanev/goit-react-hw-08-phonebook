@@ -1,1 +1,1 @@
-export { default } from 'components/FindContactPage/FindContactPage';
+export { FindContactPage } from 'components/FindContactPage/FindContactPage';

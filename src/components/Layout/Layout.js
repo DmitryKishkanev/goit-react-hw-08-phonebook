@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 const Layout = () => {
@@ -26,7 +27,10 @@ const Layout = () => {
         </ul>
       </header>
       <main>
-        <Outlet />
+        {/* В <Outlet /> рендерятся все маршруты - оборачиваем его в Suspense для асинхронной загрузки */}
+        <Suspense fallback={<div>LOADING...</div>}>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );

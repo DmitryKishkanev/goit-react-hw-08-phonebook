@@ -4,8 +4,10 @@ import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
 import BackLink from 'components/BackLink';
 
-const FindContactPage = () => {
+export const FindContactPage = () => {
   const location = useLocation();
+  // Сохраняем URL откуда мы пришли для возврата назад. Или вернуться на '/contacts'
+  // const backLinkLokatonRef = location.state?.from ?? '/contacts';
   // сохраняем в useRef() на случай если появятся пути глубже
   const backLinkLokatonRef = useRef(location.state?.from ?? '/contacts');
 
@@ -17,5 +19,3 @@ const FindContactPage = () => {
     </div>
   );
 };
-
-export default FindContactPage;

@@ -1,1 +1,1 @@
-export { default } from 'components/NewContactPage/NewContactPage';
+export { NewContactPage } from 'components/NewContactPage/NewContactPage';

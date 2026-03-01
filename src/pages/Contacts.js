@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 const Contacts = () => {
@@ -18,8 +19,11 @@ const Contacts = () => {
         </li>
       </ul>
 
-      {/* Указывает местоположение в разметке */}
-      <Outlet />
+      {/* В <Outlet /> рендерятся вложенные маршруты - оборачиваем его в Suspense для асинхронной загрузки */}
+      <Suspense fallback={<div>LOADING SUBPAGE...</div>}>
+        {/* Указывает местоположение в разметке */}
+        <Outlet />
+      </Suspense>
     </>
   );
 };

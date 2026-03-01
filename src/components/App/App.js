@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 // import { Route, Routes, NavLink } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
 // import ContactForm from 'components/ContactForm';
@@ -7,11 +7,27 @@ import { Route, Routes } from 'react-router-dom';
 // import ContactList from 'components/ContactList';
 // import { Container } from 'components/App/App.styled';
 import { fetchContacts } from '../../redux/phonebook';
-import Home from 'pages/Home';
-import Contacts from 'pages/Contacts';
-import NewContactPage from 'components/NewContactPage';
-import FindContactPage from 'components/FindContactPage';
+
+// Layout - оставляем так, без асинхронной загрузки, без lazy()
 import Layout from 'components/Layout';
+
+const Home = lazy(() => import('../../pages/Home'));
+const Contacts = lazy(() => import('../../pages/Contacts'));
+
+// Пример именованного импорта с асинхронной загрузкой
+const NewContactPage = lazy(() =>
+  import('../NewContactPage').then(module => ({
+    ...module,
+    default: module.NewContactPage,
+  })),
+);
+// Пример именованного импорта с асинхронной загрузкой
+const FindContactPage = lazy(() =>
+  import('../FindContactPage').then(module => ({
+    ...module,
+    default: module.FindContactPage,
+  })),
+);
 
 export default function App() {
   const dispatch = useDispatch();
@@ -42,7 +58,6 @@ export default function App() {
           <Route path="login" element={<div>login page</div>} />
           <Route path="register" element={<div>register page</div>} />
           <Route path="contacts" element={<Contacts />}>
-            {/* <Route path="newContactPage" element={<NewContactPage />} /> */}
             <Route path="newContactPage" element={<NewContactPage />} />
             <Route path="findContactPage" element={<FindContactPage />} />
           </Route>
