@@ -13,6 +13,8 @@ import Layout from 'components/Layout';
 
 const Home = lazy(() => import('../../pages/Home'));
 const Contacts = lazy(() => import('../../pages/Contacts'));
+const RegisterPage = lazy(() => import('../../pages/Register'));
+const LoginPage = lazy(() => import('../../pages/Login'));
 
 // Пример именованного импорта с асинхронной загрузкой
 const NewContactPage = lazy(() =>
@@ -55,8 +57,8 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           {/* Индексный маршрут не может иметь вложенных маршрутов */}
           <Route index element={<Home />} />
-          <Route path="login" element={<div>login page</div>} />
-          <Route path="register" element={<div>register page</div>} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
           <Route path="contacts" element={<Contacts />}>
             <Route path="newContactPage" element={<NewContactPage />} />
             <Route path="findContactPage" element={<FindContactPage />} />
