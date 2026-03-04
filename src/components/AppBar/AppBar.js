@@ -5,11 +5,9 @@ import AuthNav from 'components/AuthNav';
 const AppBar = () => {
   return (
     <header>
-      <div>
-        <Navigation />
-        <UserMenu />
-        <AuthNav />
-      </div>
+      <Navigation />
+      <UserMenu />
+      <AuthNav />
     </header>
   );
 };
