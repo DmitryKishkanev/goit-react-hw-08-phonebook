@@ -4,11 +4,11 @@ import AuthNav from 'components/AuthNav';
 
 const AppBar = () => {
   return (
-    <heder>
+    <header>
       <Navigation />
       <UserMenu />
       <AuthNav />
-    </heder>
+    </header>
   );
 };
 
