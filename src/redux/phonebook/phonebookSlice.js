@@ -1,6 +1,11 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { phonebookInitialState } from './initialState';
-import { fetchContacts, addContact, deleteContact } from './operations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  updateContact,
+} from './operations';
 
 const STATUS = {
   PENDING: 'pending',
@@ -9,7 +14,7 @@ const STATUS = {
 };
 
 // const arrThunks = [fetchContacts, addContact, deleteContact];
-const arrThunks = [fetchContacts, addContact];
+const arrThunks = [fetchContacts, addContact, updateContact];
 
 const oneOfTheThunks = type => arrThunks.map(el => el[type]);
 
@@ -41,6 +46,15 @@ const handleFulfilledDel = (state, action) => {
   state.items = state.items.filter(contact => contact.id !== index);
 };
 
+const handleFulfilledUpdate = (state, action) => {
+  const updateContact = action.payload;
+  const index = state.items.findIndex(item => item.id === updateContact.id);
+
+  if (index !== -1) {
+    state.items[index] = updateContact;
+  }
+};
+
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
@@ -57,6 +71,7 @@ export const phonebookSlice = createSlice({
       .addCase(fetchContacts.fulfilled, handleFulfilledFetch)
       .addCase(addContact.fulfilled, handleFulfilledAdd)
       .addCase(deleteContact.fulfilled, handleFulfilledDel)
+      .addCase(updateContact.fulfilled, handleFulfilledUpdate)
       .addMatcher(isAnyOf(...oneOfTheThunks(PENDING)), handlePending)
       .addMatcher(isAnyOf(...oneOfTheThunks(FULFILLED)), handleFulfilled)
       .addMatcher(isAnyOf(...oneOfTheThunks(REJECTED)), handleRejected);

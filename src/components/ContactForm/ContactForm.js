@@ -10,12 +10,12 @@ import {
 
 const schema = object({
   name: string().required(),
-  phone: string().min(7).max(12).required(),
+  number: string().min(7).max(12).required(),
 });
 
 const initialValue = {
   name: '',
-  phone: '',
+  number: '',
 };
 
 const ContactForm = () => {
@@ -26,7 +26,7 @@ const ContactForm = () => {
   const onSubmit = (values, { resetForm }) => {
     const newContact = {
       name: values.name,
-      phone: values.phone,
+      number: values.number,
     };
 
     const isNamePresent = contacts.some(
@@ -58,8 +58,8 @@ const ContactForm = () => {
 
         <label>
           <span>Number</span>
-          <Field type="tel" name="phone" required />
-          <ErrorMessage name="phone" />
+          <Field type="tel" name="number" required />
+          <ErrorMessage name="number" />
         </label>
 
         <button

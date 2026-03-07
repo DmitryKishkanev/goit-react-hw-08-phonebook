@@ -1,20 +1,26 @@
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../hooks';
 
 const Home = () => {
+  const { isLoggedIn } = useAuth();
   return (
-    // Рендерим по условию в зависимости от isLoggedIn
-    <ul>
-      <li>
-        <NavLink to="/login">
-          <button>Log in</button>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/register">
-          <button>Register</button>
-        </NavLink>
-      </li>
-    </ul>
+    <>
+      {isLoggedIn ? (
+        <div>
+          <h1>Phonebook welcome page</h1>
+        </div>
+      ) : (
+        <div>
+          <NavLink to="/login">
+            <button>Log in</button>
+          </NavLink>
+
+          <NavLink to="/register">
+            <button>Register</button>
+          </NavLink>
+        </div>
+      )}
+    </>
   );
 };
 

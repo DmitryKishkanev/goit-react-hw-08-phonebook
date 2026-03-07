@@ -13,14 +13,18 @@ const ContactItem = () => {
 
   return (
     <>
-      {filteredContacts.map(({ id, name, phone }) => (
+      {filteredContacts.map(({ id, name, number }) => (
         <ContactEl key={id}>
           <div>
             <p>
-              {name}: {phone}
+              {name}: {number}
             </p>
 
-            <button onClick={() => handleDeleteContact(id)}>Delete</button>
+            <div>
+              <button onClick={() => handleDeleteContact(id)}>Delete</button>
+
+              <button type="button">Edit</button>
+            </div>
           </div>
         </ContactEl>
       ))}

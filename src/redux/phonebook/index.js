@@ -1,4 +1,9 @@
-export { fetchContacts, addContact, deleteContact } from './operations';
+export {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  updateContact,
+} from './operations';
 
 export {
   selectContacts,

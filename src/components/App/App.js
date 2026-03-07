@@ -1,12 +1,16 @@
 import { useDispatch } from 'react-redux';
 import { lazy, useEffect } from 'react';
 // import { Route, Routes, NavLink } from 'react-router-dom';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 // import ContactForm from 'components/ContactForm';
 // import Filter from 'components/Filter';
 // import ContactList from 'components/ContactList';
 // import { Container } from 'components/App/App.styled';
-import { fetchContacts } from '../../redux/phonebook';
+// import { fetchContacts } from '../../redux/phonebook';
+import { refreshCurrentUser } from '../../redux/auth';
+import { useAuth } from '../../hooks';
+import { PrivateRoute } from '../PrivateRoute';
+import { RestrictedRoute } from '../RestrictedRoute';
 
 // Layout - оставляем так, без асинхронной загрузки, без lazy()
 import Layout from 'components/Layout';
@@ -33,12 +37,15 @@ const FindContactPage = lazy(() =>
 
 export default function App() {
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshCurrentUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
     <div>
       {/* <nav>
         <header>
@@ -57,12 +64,48 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           {/* Индексный маршрут не может иметь вложенных маршрутов */}
           <Route index element={<Home />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="contacts" element={<Contacts />}>
-            <Route path="newContactPage" element={<NewContactPage />} />
-            <Route path="findContactPage" element={<FindContactPage />} />
+          <Route
+            path="login"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+              />
+            }
+          />
+          <Route
+            path="register"
+            element={
+              <RestrictedRoute redirectTo="/" component={<RegisterPage />} />
+            }
+          />
+          <Route
+            path="contacts"
+            element={
+              <PrivateRoute>
+                <Contacts />
+              </PrivateRoute>
+            }
+          >
+            <Route
+              path="newContactPage"
+              element={
+                <PrivateRoute>
+                  <NewContactPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="findContactPage"
+              element={
+                <PrivateRoute>
+                  <FindContactPage />
+                </PrivateRoute>
+              }
+            />
           </Route>
+
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
 
         {/* <Route path="/contacts" element={<Contacts />} />
