@@ -1,3 +1,5 @@
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +9,7 @@ import {
   selectContacts,
   selectIsLoading,
 } from '../../redux/phonebook';
+import Button from '@mui/material/Button';
 
 const schema = object({
   name: string().required(),
@@ -34,43 +37,54 @@ const ContactForm = () => {
     );
 
     if (isNamePresent) {
-      alert(`"${newContact.name}" is already in contacts `);
+      toast.error(`${newContact.name} is already in contacts `, {
+        theme: 'colored',
+      });
+      resetForm();
       return;
     }
 
     dispatch(addContact(newContact));
 
     resetForm();
+    toast.success('Сontact added successfully', { theme: 'colored' });
   };
 
   return (
-    <Formik
-      initialValues={initialValue}
-      validationSchema={schema}
-      onSubmit={onSubmit}
-    >
-      <FormContainer>
-        <label>
-          <span>Name</span>
-          <Field type="text" name="name" required />
-          <ErrorMessage name="name" />
-        </label>
+    <div>
+      <Formik
+        initialValues={initialValue}
+        validationSchema={schema}
+        onSubmit={onSubmit}
+      >
+        <FormContainer>
+          <label>
+            <span>Name</span>
+            <Field type="text" name="name" required />
+            <ErrorMessage name="name" />
+          </label>
 
-        <label>
-          <span>Number</span>
-          <Field type="tel" name="number" required />
-          <ErrorMessage name="number" />
-        </label>
+          <label>
+            <span>Number</span>
+            <Field type="tel" name="number" required />
+            <ErrorMessage name="number" />
+          </label>
+          {/* 
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="phonebook__button"
+          >
+            {isLoading && '☎'} Добавить
+          </button> */}
+          <Button variant="contained" type="submit" disabled={isLoading}>
+            {isLoading && '☎'} Add
+          </Button>
+        </FormContainer>
+      </Formik>
 
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="phonebook__button"
-        >
-          {isLoading && '☎'} Добавить
-        </button>
-      </FormContainer>
-    </Formik>
+      <ToastContainer position="top-center" autoClose={5000} />
+    </div>
   );
 };
 

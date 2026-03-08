@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../redux/auth';
+import { Button, TextField, Box, Typography } from '@mui/material';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -22,29 +25,53 @@ const RegisterForm = () => {
       form.reset();
       navigate('/contacts', { replace: true });
     } catch (error) {
-      console.error('Login failed:', error);
+      setErrorMessage(error.message || 'Register failed');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username
-        <input type="text" name="name" />
-      </label>
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 2,
+        width: 300,
+        mx: 'auto',
+        mt: 4,
+      }}
+    >
+      <Typography variant="h5" align="center">
+        Registration
+      </Typography>
 
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
+      <TextField label="Name" type="text" name="name" required fullWidth />
 
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
+      <TextField label="Email" type="email" name="email" required fullWidth />
 
-      <button type="submit">Register</button>
-    </form>
+      <TextField
+        label="Password"
+        type="password"
+        name="password"
+        required
+        fullWidth
+      />
+
+      {errorMessage && (
+        <Typography color="error" variant="body2">
+          {errorMessage}
+        </Typography>
+      )}
+
+      <Button
+        variant="contained"
+        type="submit"
+        sx={{ alignSelf: 'center', width: '100px' }}
+      >
+        Sign Up
+      </Button>
+    </Box>
   );
 };
 
