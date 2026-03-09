@@ -13,9 +13,22 @@ const UserMenu = () => {
 
       <Button
         variant="outlined"
-        color="secondary"
+        color="inherit"
         onClick={() => dispatch(logOut())}
         style={{ margin: 'auto 0' }}
+        sx={{
+          textDecoration: 'none',
+          color: 'inherit',
+          '&:hover': {
+            textDecoration: 'none',
+            color: 'inherit',
+            backgroundColor: 'rgba(255,255,255,0.1)',
+          },
+          '&:focus': {
+            textDecoration: 'none',
+            color: 'inherit',
+          },
+        }}
       >
         Log out
       </Button>

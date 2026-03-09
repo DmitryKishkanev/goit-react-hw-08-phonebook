@@ -33,10 +33,6 @@ const AppBarComponent = () => {
         </Toolbar>
       </Container>
     </AppBar>
-    // <header>
-    //   <Navigation />
-    //   {isLoggedIn ? <UserMenu /> : <AuthNav />}
-    // </header>
   );
 };
 

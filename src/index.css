@@ -27,8 +27,8 @@ a:hover {
 body {
   margin: 0;
   min-width: 320px;
-  min-height: 100vh;
-  background-image: url('../public/background-image.jpg');
+  height: 100vh;
+  /* background-image: url('../public/background-image.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
