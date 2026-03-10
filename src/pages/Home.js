@@ -1,14 +1,26 @@
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../hooks';
 import { Box, Button } from '@mui/material';
-import PhonebookImage from '../assets/PhonebookImageAll.JPG';
+import GuestBg from '../assets/PhonebookImageALL.jpg';
+import LoggedInBg from '../assets/background-image.jpg';
 
 const Home = () => {
   const { isLoggedIn } = useAuth();
   return (
     <>
       {isLoggedIn ? (
-        <div>
+        <div
+          style={{
+            backgroundImage: `url(${LoggedInBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            minHeight: 'calc(100vh - 85.98px)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <h1>Phonebook welcome page</h1>
         </div>
       ) : (
@@ -21,7 +33,7 @@ const Home = () => {
             gap: 2,
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundImage: `url(${PhonebookImage})`,
+            backgroundImage: `url(${GuestBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
