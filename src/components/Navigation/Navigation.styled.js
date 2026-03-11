@@ -16,7 +16,6 @@ const StyledNavLink = styled(NavLink)`
   &:hover,
   &:focus {
     text-decoration: none;
-
     transform: scale(1.09);
     color: black;
   }

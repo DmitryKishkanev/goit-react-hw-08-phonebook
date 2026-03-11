@@ -1,17 +1,22 @@
 import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import { useAuth } from '../../hooks';
 import AppBarComponent from 'components/AppBar';
+import { BackgroundWrapper } from './Layout.styled';
 
 const Layout = () => {
+  const { isLoggedIn } = useAuth();
+  const location = useLocation();
+
   return (
-    <div>
+    <BackgroundWrapper isLoggedIn={isLoggedIn} pathname={location.pathname}>
       <AppBarComponent />
 
       {/* В <Outlet /> рендерятся все маршруты - оборачиваем его в Suspense для асинхронной загрузки */}
       <Suspense fallback={<div>LOADING...</div>}>
         <Outlet />
       </Suspense>
-    </div>
+    </BackgroundWrapper>
   );
 };
 

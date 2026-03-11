@@ -2,7 +2,14 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logIn } from '../../redux/auth';
-import { Button, TextField, Box, Typography } from '@mui/material';
+import {
+  LoginFormWrapper,
+  LoginFormBox,
+  LoginFormTitle,
+  LoginFormField,
+  LoginFormError,
+  LoginFormButton,
+} from './LoginForm.styled';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -29,46 +36,41 @@ const LoginForm = () => {
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-        width: 300,
-        mx: 'auto',
-        mt: 4,
-      }}
-    >
-      <Typography variant="h5" align="center">
-        Log In
-      </Typography>
+    <LoginFormWrapper>
+      <LoginFormBox component="form" onSubmit={handleSubmit}>
+        <LoginFormTitle variant="h5">Log In</LoginFormTitle>
 
-      <TextField label="Email" type="email" name="email" required fullWidth />
+        <LoginFormField
+          label="Email"
+          type="email"
+          name="email"
+          required
+          fullWidth
+        />
 
-      <TextField
-        label="Password"
-        type="password"
-        name="password"
-        required
-        fullWidth
-      />
+        <LoginFormField
+          label="Password"
+          type="password"
+          name="password"
+          required
+          fullWidth
+        />
 
-      {errorMessage && (
-        <Typography color="error" variant="body2">
-          {errorMessage}
-        </Typography>
-      )}
+        {errorMessage && (
+          <LoginFormError color="error" variant="body2">
+            {`${errorMessage} - try again`}
+          </LoginFormError>
+        )}
 
-      <Button
-        variant="contained"
-        type="submit"
-        sx={{ alignSelf: 'center', width: '100px' }}
-      >
-        Log In
-      </Button>
-    </Box>
+        <LoginFormButton
+          variant="outlined"
+          type="submit"
+          sx={{ alignSelf: 'center', width: '100px' }}
+        >
+          Log In
+        </LoginFormButton>
+      </LoginFormBox>
+    </LoginFormWrapper>
   );
 };
 

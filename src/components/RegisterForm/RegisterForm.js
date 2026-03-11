@@ -2,7 +2,14 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { register } from '../../redux/auth';
-import { Button, TextField, Box, Typography } from '@mui/material';
+import {
+  RegistrationFormWrapper,
+  RegistrationFormBox,
+  RegistrationTitle,
+  RegistrationFormField,
+  RegistrationFormError,
+  RegistrationFormButton,
+} from './RegisterForm.styled';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -30,48 +37,49 @@ const RegisterForm = () => {
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-        width: 300,
-        mx: 'auto',
-        mt: 4,
-      }}
-    >
-      <Typography variant="h5" align="center">
-        Registration
-      </Typography>
+    <RegistrationFormWrapper>
+      <RegistrationFormBox component="form" onSubmit={handleSubmit}>
+        <RegistrationTitle variant="h5">Registration</RegistrationTitle>
 
-      <TextField label="Name" type="text" name="name" required fullWidth />
+        <RegistrationFormField
+          label="Name"
+          type="text"
+          name="name"
+          required
+          fullWidth
+        />
 
-      <TextField label="Email" type="email" name="email" required fullWidth />
+        <RegistrationFormField
+          label="Email"
+          type="email"
+          name="email"
+          required
+          fullWidth
+        />
 
-      <TextField
-        label="Password"
-        type="password"
-        name="password"
-        required
-        fullWidth
-      />
+        <RegistrationFormField
+          label="Password"
+          type="password"
+          name="password"
+          required
+          fullWidth
+        />
 
-      {errorMessage && (
-        <Typography color="error" variant="body2">
-          {errorMessage}
-        </Typography>
-      )}
+        {errorMessage && (
+          <RegistrationFormError variant="body2">
+            {`${errorMessage} - try again`}
+          </RegistrationFormError>
+        )}
 
-      <Button
-        variant="contained"
-        type="submit"
-        sx={{ alignSelf: 'center', width: '100px' }}
-      >
-        Sign Up
-      </Button>
-    </Box>
+        <RegistrationFormButton
+          variant="outlined"
+          type="submit"
+          sx={{ alignSelf: 'center', width: '100px' }}
+        >
+          Sign Up
+        </RegistrationFormButton>
+      </RegistrationFormBox>
+    </RegistrationFormWrapper>
   );
 };
 
