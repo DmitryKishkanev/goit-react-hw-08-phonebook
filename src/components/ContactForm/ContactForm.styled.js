@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 import { Form } from 'formik';
 
+const ContactFormWrapper = styled.div``;
+
+export { ContactFormWrapper };
+
 const FormContainer = styled(Form)`
   display: flex;
   flex-direction: column;

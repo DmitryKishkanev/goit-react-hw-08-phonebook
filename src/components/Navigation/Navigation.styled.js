@@ -16,13 +16,13 @@ const StyledNavLink = styled(NavLink)`
   &:hover,
   &:focus {
     text-decoration: none;
-    transform: scale(1.09);
-    color: black;
+    transform: scale(1.2);
+    color: white;
   }
 
   &.active {
     text-decoration: none;
-    color: red;
+    color: rgb(82, 38, 0);
   }
 `;
 

@@ -12,7 +12,7 @@ export const NewContactPage = () => {
 
   return (
     <>
-      <BackLink to={backLinkLokatonRef.current}>Back</BackLink>
+      {/* <BackLink to={backLinkLokatonRef.current}>Back</BackLink> */}
       <ContactForm />
     </>
   );

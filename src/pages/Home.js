@@ -25,11 +25,12 @@ const Home = () => {
             component={NavLink}
             to="/login"
             variant="outlined"
-            color="inherit"
+            // color="inherit"
             sx={{
               width: '92px',
               marginLeft: '1000px',
-              border: '2px solid black',
+              color: 'rgb(124, 58, 0)',
+              border: '2px solid rgb(124, 58, 0)',
               transition:
                 'transform 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
 
@@ -40,7 +41,7 @@ const Home = () => {
               },
               '&:focus': {
                 transform: 'scale(1.07)',
-                color: 'white',
+                color: 'rgb(255, 129, 56)',
                 borderColor: 'rgb(255, 129, 56)',
               },
             }}
@@ -56,7 +57,8 @@ const Home = () => {
             sx={{
               width: '92px',
               marginLeft: '1000px',
-              border: '2px solid black',
+              color: 'rgb(124, 58, 0)',
+              border: '2px solid rgb(124, 58, 0)',
               transition:
                 'transform 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1)',
 
@@ -67,7 +69,7 @@ const Home = () => {
               },
               '&:focus': {
                 transform: 'scale(1.07)',
-                color: 'white',
+                color: 'rgb(255, 129, 56)',
                 borderColor: 'rgb(255, 129, 56)',
               },
             }}

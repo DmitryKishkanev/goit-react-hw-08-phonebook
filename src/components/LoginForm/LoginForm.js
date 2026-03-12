@@ -15,6 +15,8 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -23,12 +25,14 @@ const LoginForm = () => {
     try {
       await dispatch(
         logIn({
-          email: form.elements.email.value,
-          password: form.elements.password.value,
+          email,
+          password,
         }),
       ).unwrap();
 
       form.reset();
+      setEmail('');
+      setPassword('');
       navigate('/contacts', { replace: true });
     } catch (error) {
       setErrorMessage(error.message || 'Login failed');
@@ -46,6 +50,8 @@ const LoginForm = () => {
           name="email"
           required
           fullWidth
+          value={email}
+          onChange={e => setEmail(e.target.value)}
         />
 
         <LoginFormField
@@ -54,6 +60,8 @@ const LoginForm = () => {
           name="password"
           required
           fullWidth
+          value={password}
+          onChange={e => setPassword(e.target.value)}
         />
 
         {errorMessage && (
@@ -66,6 +74,7 @@ const LoginForm = () => {
           variant="outlined"
           type="submit"
           sx={{ alignSelf: 'center', width: '100px' }}
+          disabled={!email || !password}
         >
           Log In
         </LoginFormButton>

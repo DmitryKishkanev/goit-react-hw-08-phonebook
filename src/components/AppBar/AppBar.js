@@ -2,7 +2,9 @@ import Navigation from 'components/Navigation';
 import UserMenu from 'components/UserMenu';
 import AuthNav from 'components/AuthNav';
 import { useAuth } from '../../hooks';
-import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Container, Toolbar } from '@mui/material';
+import { NavLink } from 'react-router-dom';
+import { AppBarLogo } from './AppBar.styled';
 
 const AppBarComponent = () => {
   const { isLoggedIn } = useAuth();
@@ -17,15 +19,9 @@ const AppBarComponent = () => {
           }}
         >
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Typography
-              variant="h4"
-              sx={{
-                textAlign: 'left',
-                margin: '0 0 0 50px',
-              }}
-            >
+            <AppBarLogo component={NavLink} to="/" variant="h4">
               ☎Phonebook
-            </Typography>
+            </AppBarLogo>
             <Navigation />
           </Box>
 

@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth';
 import { useAuth } from '../../hooks';
-import Button from '@mui/material/Button';
-import { UserMenuBox } from './UserMenu.styled';
+
+import { UserMenuBox, UserMenuButton } from './UserMenu.styled';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
@@ -11,14 +11,14 @@ const UserMenu = () => {
     <UserMenuBox>
       <p>Welcome, {userName}</p>
 
-      <Button
+      <UserMenuButton
         variant="outlined"
         color="inherit"
         onClick={() => dispatch(logOut())}
-        style={{ margin: 'auto 0' }}
+        // style={{ margin: 'auto 0' }}
         sx={{
-          textDecoration: 'none',
-          color: 'inherit',
+          // textDecoration: 'none',
+          // color: 'inherit',
           '&:hover': {
             textDecoration: 'none',
             color: 'inherit',
@@ -31,7 +31,7 @@ const UserMenu = () => {
         }}
       >
         Log out
-      </Button>
+      </UserMenuButton>
     </UserMenuBox>
   );
 };

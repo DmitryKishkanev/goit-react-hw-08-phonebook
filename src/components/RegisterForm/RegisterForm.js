@@ -15,6 +15,9 @@ const RegisterForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -23,13 +26,16 @@ const RegisterForm = () => {
     try {
       await dispatch(
         register({
-          name: form.elements.name.value,
-          email: form.elements.email.value,
-          password: form.elements.password.value,
+          name,
+          email,
+          password,
         }),
       ).unwrap();
 
       form.reset();
+      setName('');
+      setEmail('');
+      setPassword('');
       navigate('/contacts', { replace: true });
     } catch (error) {
       setErrorMessage(error.message || 'Register failed');
@@ -47,6 +53,8 @@ const RegisterForm = () => {
           name="name"
           required
           fullWidth
+          value={name}
+          onChange={e => setName(e.target.value)}
         />
 
         <RegistrationFormField
@@ -55,6 +63,8 @@ const RegisterForm = () => {
           name="email"
           required
           fullWidth
+          value={email}
+          onChange={e => setEmail(e.target.value)}
         />
 
         <RegistrationFormField
@@ -63,6 +73,8 @@ const RegisterForm = () => {
           name="password"
           required
           fullWidth
+          value={password}
+          onChange={e => setPassword(e.target.value)}
         />
 
         {errorMessage && (
@@ -75,6 +87,7 @@ const RegisterForm = () => {
           variant="outlined"
           type="submit"
           sx={{ alignSelf: 'center', width: '100px' }}
+          disabled={!name || !email || !password}
         >
           Sign Up
         </RegistrationFormButton>
