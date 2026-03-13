@@ -9,9 +9,10 @@ const StyledLink = styled(Link)`
   gap: 4px;
   padding: 8px 0;
   margin-left: auto;
-  color: black;
+  color: white;
   text-decoration: none;
   font-weight: 500;
+  font-size: 20px;
   text-transform: uppercase;
 
   transition:

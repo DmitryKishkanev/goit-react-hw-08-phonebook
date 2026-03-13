@@ -1,10 +1,16 @@
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { Formik, Form } from 'formik';
-import { TextField, Button, Box } from '@mui/material';
 import { object, string } from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { ContactFormWrapper } from 'components/ContactForm/ContactForm.styled';
+import {
+  // ContactFormBackdrop,
+  ContactFormWrapper,
+  ContactFormTitle,
+  ContactFormBox,
+  ContactFormTextField,
+  ContactFormBacButton,
+} from 'components/ContactForm/ContactForm.styled';
 import {
   addContact,
   selectContacts,
@@ -51,7 +57,9 @@ const ContactForm = () => {
   };
 
   return (
+    // <ContactFormBackdrop>
     <ContactFormWrapper>
+      <ContactFormTitle variant="h5">Add a new contact</ContactFormTitle>
       <Formik
         initialValues={initialValue}
         validationSchema={schema}
@@ -59,15 +67,8 @@ const ContactForm = () => {
       >
         {({ values, errors, touched, handleChange, handleBlur }) => (
           <Form>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 2,
-                width: 300,
-              }}
-            >
-              <TextField
+            <ContactFormBox>
+              <ContactFormTextField
                 label="Name"
                 name="name"
                 value={values.name}
@@ -77,7 +78,7 @@ const ContactForm = () => {
                 helperText={touched.name && errors.name}
               />
 
-              <TextField
+              <ContactFormTextField
                 label="Number"
                 name="number"
                 type="tel"
@@ -88,16 +89,21 @@ const ContactForm = () => {
                 helperText={touched.number && errors.number}
               />
 
-              <Button variant="contained" type="submit" disabled={isLoading}>
+              <ContactFormBacButton
+                variant="contained"
+                type="submit"
+                disabled={!values.name || !values.number || isLoading}
+              >
                 {isLoading && '☎'} Add
-              </Button>
-            </Box>
+              </ContactFormBacButton>
+            </ContactFormBox>
           </Form>
         )}
       </Formik>
 
       <ToastContainer position="top-center" autoClose={5000} />
     </ContactFormWrapper>
+    // </ContactFormBackdrop>
   );
 };
 

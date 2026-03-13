@@ -1,57 +1,90 @@
 import styled from '@emotion/styled';
-import { Form } from 'formik';
+import { Box, Typography, TextField, Button } from '@mui/material';
 
-const ContactFormWrapper = styled.div``;
+// const ContactFormBackdrop = styled(Box)`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 100%;
+//   min-height: calc(100vh - 85.98px);
+//   background-color: rgba(0, 0, 0, 0.5);
+// `;
 
-export { ContactFormWrapper };
-
-const FormContainer = styled(Form)`
+const ContactFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 500px;
-  height: 260px;
-  padding: 15px;
-  margin-bottom: 35px;
-
-  border: 1px solid black;
+  gap: 16px;
+  padding: 12px 32px;
+  border: 1px solid white;
   border-radius: 4px;
+  /* box-shadow: 0 0 10px rgba(82, 103, 121, 1); */
+  /* background-color: rgba(20, 125, 223, 0.5); */
+  background-color: rgba(161, 107, 63, 0.9);
+`;
 
-  label {
-    display: flex;
-    flex-direction: column;
-    width: 270px;
-    margin-bottom: 30px;
+const ContactFormTitle = styled(Typography)`
+  text-align: center;
+  color: white;
+`;
+
+const ContactFormBox = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 300px;
+`;
+
+const ContactFormTextField = styled(TextField)`
+  border-radius: 4px;
+  background-color: white;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  & .MuiOutlinedInput-root {
+    & fieldset {
+      border: none;
+    }
+    &:hover fieldset {
+      border: none;
+    }
+    &.Mui-focused fieldset {
+      border: none;
+    }
   }
 
-  span {
-    margin-bottom: 5px;
-
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.19;
-    letter-spacing: 0.03em;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:focus {
+    transform: scale(1.05);
   }
 
-  input {
-    height: 33px;
-    padding: 3px;
-
-    border-radius: 4px;
-    background-color: white;
-
-    outline: none;
-    cursor: pointer;
-
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.19;
-    letter-spacing: 0.03em;
-    color: black;
+  /* стили для label */
+  & .MuiInputLabel-root {
+    color: rgba(0, 0, 0, 0.5); /* цвет по умолчанию */
+    font-size: 1.3rem;
   }
 
-  button {
-    margin-left: auto;
+  & .MuiInputLabel-root.Mui-focused {
+    color: black; /* цвет при фокусе */
+    font-size: 1.5rem;
   }
 `;
 
-export { FormContainer };
+const ContactFormBacButton = styled(Button)`
+  margin: 0 auto;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.09);
+  }
+`;
+
+export {
+  // ContactFormBackdrop,
+  ContactFormWrapper,
+  ContactFormTitle,
+  ContactFormBox,
+  ContactFormTextField,
+  ContactFormBacButton,
+};
