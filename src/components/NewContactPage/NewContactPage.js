@@ -2,8 +2,11 @@ import { useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ContactForm from 'components/ContactForm';
 import BackLink from 'components/BackLink';
-import { ContactPageBackdrop, ContactPageBox } from './NewContactPage.styled';
-import { Button } from '@mui/material';
+import {
+  ContactPageBackdrop,
+  ContactPageBox,
+  ContactPageButton,
+} from './NewContactPage.styled';
 
 export const NewContactPage = () => {
   const location = useLocation();
@@ -23,9 +26,13 @@ export const NewContactPage = () => {
         <BackLink to={backLinkLokatonRef.current}>Back</BackLink>
         <ContactForm />
 
-        <Button type="button" onClick={handeClose}>
+        <ContactPageButton
+          type="button"
+          onClick={handeClose}
+          variant="outlined"
+        >
           Close
-        </Button>
+        </ContactPageButton>
       </ContactPageBox>
     </ContactPageBackdrop>
   );

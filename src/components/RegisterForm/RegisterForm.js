@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { register } from '../../redux/auth';
 import {
   RegistrationFormWrapper,
@@ -12,7 +12,7 @@ import {
 } from './RegisterForm.styled';
 
 const RegisterForm = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
   const [name, setName] = useState('');
@@ -36,7 +36,7 @@ const RegisterForm = () => {
       setName('');
       setEmail('');
       setPassword('');
-      navigate('/contacts', { replace: true });
+      // navigate('/contacts', { replace: true });
     } catch (error) {
       setErrorMessage(error.message || 'Register failed');
     }

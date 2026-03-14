@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ContactEl } from 'components/ContactItem/ContactItem.styled';
+import {
+  ContactEl,
+  ContactItemBox,
+  ContactItemContent,
+  ContactItemButtonsBox,
+  ContactItemButton,
+} from 'components/ContactItem/ContactItem.styled';
 import { selectFilteredContacts, deleteContact } from '../../redux/phonebook';
-import Button from '@mui/material/Button';
+
 import DeleteIcon from '@mui/icons-material/Delete';
 import ModalContentComponent from '../ModalContentComponent';
 
@@ -32,25 +38,28 @@ const ContactItem = () => {
     <>
       {filteredContacts.map(({ id, name, number }) => (
         <ContactEl key={id}>
-          <div>
-            <p>
+          <ContactItemBox>
+            <ContactItemContent>
               {name}: {number}
-            </p>
+            </ContactItemContent>
 
-            <div>
-              <Button
+            <ContactItemButtonsBox>
+              <ContactItemButton
                 variant="outlined"
                 startIcon={<DeleteIcon />}
                 onClick={() => handleDeleteContact(id)}
               >
                 Delete
-              </Button>
+              </ContactItemButton>
 
-              <Button variant="outlined" onClick={() => handleOpenModal(id)}>
+              <ContactItemButton
+                variant="outlined"
+                onClick={() => handleOpenModal(id)}
+              >
                 Edit
-              </Button>
-            </div>
-          </div>
+              </ContactItemButton>
+            </ContactItemButtonsBox>
+          </ContactItemBox>
 
           {selectedContactId && (
             <ModalContentComponent

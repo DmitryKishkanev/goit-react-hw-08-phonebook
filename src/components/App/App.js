@@ -47,18 +47,6 @@ export default function App() {
     <b>Refreshing user...</b>
   ) : (
     <div>
-      {/* <nav>
-        <header>
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/contacts">Contacts</NavLink>
-            </li>
-          </ul>
-        </header>
-      </nav> */}
       <Routes>
         {/*Вложенным маршрутам не нужен слеш в начале */}
         <Route path="/" element={<Layout />}>
@@ -107,18 +95,7 @@ export default function App() {
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
-
-        {/* <Route path="/contacts" element={<Contacts />} />
-        <Route path="/contacts/:contactsId" element={<div>New contact</div>} /> */}
       </Routes>
-
-      {/* <Container>
-        <h1>Phonebook</h1>
-        <ContactForm />
-        <h2>Contacts</h2>
-        <Filter />
-        <ContactList />
-      </Container> */}
     </div>
   );
 }

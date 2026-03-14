@@ -57,7 +57,6 @@ const ContactForm = () => {
   };
 
   return (
-    // <ContactFormBackdrop>
     <ContactFormWrapper>
       <ContactFormTitle variant="h5">Add a new contact</ContactFormTitle>
       <Formik
@@ -90,7 +89,7 @@ const ContactForm = () => {
               />
 
               <ContactFormBacButton
-                variant="contained"
+                variant="outlined"
                 type="submit"
                 disabled={!values.name || !values.number || isLoading}
               >
@@ -101,9 +100,8 @@ const ContactForm = () => {
         )}
       </Formik>
 
-      <ToastContainer position="top-center" autoClose={5000} />
+      <ToastContainer position="bottom-center" autoClose={5000} />
     </ContactFormWrapper>
-    // </ContactFormBackdrop>
   );
 };
 

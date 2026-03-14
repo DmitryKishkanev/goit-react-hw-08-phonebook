@@ -7,7 +7,7 @@ const StyledLink = styled(Link)`
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 8px 0;
+  /* padding: 8px 0; */
   margin-left: auto;
   color: white;
   text-decoration: none;
@@ -22,7 +22,7 @@ const StyledLink = styled(Link)`
   :hover,
   :focus {
     transform: scale(1.07);
-    color: rgb(33, 150, 243);
+    color: rgb(82, 38, 0);
   }
 `;
 

@@ -4,16 +4,14 @@ import { object, string } from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import PropTypes from 'prop-types';
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  TextField,
-} from '@mui/material';
-
+import { Dialog, DialogActions } from '@mui/material';
 import { updateContact, selectContacts } from '../../redux/phonebook';
+import {
+  ModalTitle,
+  ModalContent,
+  ModalTextField,
+  ModalButton,
+} from './ModalContentComponent.styled';
 
 const schema = object({
   name: string().required(),
@@ -61,7 +59,7 @@ const ModalContentComponent = ({ onClose, contactId, open }) => {
   return (
     <>
       <Dialog open={open} onClose={onClose}>
-        <DialogTitle style={{ textAlign: 'center' }}>Edit contact</DialogTitle>
+        <ModalTitle>Edit contact</ModalTitle>
 
         <Formik
           initialValues={initialValue}
@@ -70,8 +68,8 @@ const ModalContentComponent = ({ onClose, contactId, open }) => {
         >
           {({ values, errors, touched, handleChange }) => (
             <Form>
-              <DialogContent style={{ padding: '10px 24px' }}>
-                <TextField
+              <ModalContent>
+                <ModalTextField
                   margin="dense"
                   label="Name"
                   name="name"
@@ -82,7 +80,7 @@ const ModalContentComponent = ({ onClose, contactId, open }) => {
                   helperText={touched.name && errors.name}
                 />
 
-                <TextField
+                <ModalTextField
                   margin="dense"
                   label="Number"
                   name="number"
@@ -92,20 +90,20 @@ const ModalContentComponent = ({ onClose, contactId, open }) => {
                   error={touched.number && Boolean(errors.number)}
                   helperText={touched.number && errors.number}
                 />
-              </DialogContent>
+              </ModalContent>
 
               <DialogActions>
-                <Button type="button" onClick={onClose}>
+                <ModalButton variant="outlined" type="button" onClick={onClose}>
                   Cancel
-                </Button>
+                </ModalButton>
 
-                <Button
+                <ModalButton
                   type="submit"
                   variant="contained"
                   disabled={!values.name || !values.number}
                 >
                   Save
-                </Button>
+                </ModalButton>
               </DialogActions>
             </Form>
           )}

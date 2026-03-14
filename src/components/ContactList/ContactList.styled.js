@@ -6,10 +6,7 @@ const ContactBox = styled.ul`
   gap: 20px;
 
   padding: 0;
-  margin-right: auto;
-  margin-left: 50px;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
 `;
 
 export { ContactBox };

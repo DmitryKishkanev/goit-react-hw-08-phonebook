@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import { Box, Button } from '@mui/material';
 
-const ContactPageBackdrop = styled.div`
+const ContactPageBackdrop = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,11 +11,28 @@ const ContactPageBackdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
-const ContactPageBox = styled.div`
+const ContactPageBox = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 16px;
 `;
 
-export { ContactPageBackdrop, ContactPageBox };
+const ContactPageButton = styled(Button)`
+  border-color: rgb(161, 107, 63);
+  color: white;
+  background-color: rgba(161, 107, 63, 0.7);
+  transition:
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.09);
+    border-color: white;
+    color: rgb(82, 38, 0);
+  }
+`;
+
+export { ContactPageBackdrop, ContactPageBox, ContactPageButton };

@@ -1,39 +1,44 @@
 import styled from '@emotion/styled';
+import { TextField } from '@mui/material';
 
-const FilterLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  margin-right: auto;
-  margin-bottom: 30px;
+const FilterTextField = styled(TextField)`
+  transition:
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    boorder-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  span {
-    margin-bottom: 10px;
-
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 1.19;
-    letter-spacing: 0.03em;
-    color: black;
-  }
-
-  input {
-    width: 220px;
-    height: 33px;
-    padding: 3px;
-
-    border-radius: 4px;
-    background-color: white;
-
-    outline: none;
-    cursor: pointer;
-
-    color: black;
-
+  & .MuiOutlinedInput-root {
     font-weight: 400;
     font-size: 18px;
     line-height: 1.19;
     letter-spacing: 0.03em;
+    color: rgb(82, 38, 0); // цвет текста внутри поля
+
+    & fieldset {
+      border-color: rgb(82, 38, 0);
+    }
+    &:hover fieldset {
+      border-color: rgb(82, 38, 0);
+    }
+    &.Mui-focused fieldset {
+      border-color: rgb(82, 38, 0);
+    }
+  }
+
+  &:hover {
+    transform: scale(1.03);
+  }
+  &:focus {
+    transform: scale(1.03);
+  }
+
+  & .MuiInputLabel-root {
+    color: rgba(82, 38, 0, 0.5); /* цвет по умолчанию */
+  }
+
+  & .MuiInputLabel-root.Mui-focused {
+    color: rgba(82, 38, 0, 0.5); /* цвет при фокусе */
+    font-size: 1.2rem;
   }
 `;
 
-export { FilterLabel };
+export { FilterTextField };

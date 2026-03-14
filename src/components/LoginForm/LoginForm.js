@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { logIn } from '../../redux/auth';
 import {
   LoginFormWrapper,
@@ -12,7 +12,7 @@ import {
 } from './LoginForm.styled';
 
 const LoginForm = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState('');
   const [email, setEmail] = useState('');
@@ -33,7 +33,7 @@ const LoginForm = () => {
       form.reset();
       setEmail('');
       setPassword('');
-      navigate('/contacts', { replace: true });
+      // navigate('/contacts', { replace: true });
     } catch (error) {
       setErrorMessage(error.message || 'Login failed');
     }
@@ -84,48 +84,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
-// const LoginForm = () => {
-//   const navigate = useNavigate();
-//   const dispatch = useDispatch();
-
-//   const handleSubmit = async e => {
-//     e.preventDefault();
-//     const form = e.currentTarget;
-
-//     try {
-//       await dispatch(
-//         logIn({
-//           email: form.elements.email.value,
-//           password: form.elements.password.value,
-//         }),
-//       ).unwrap();
-
-//       form.reset();
-//       navigate('/contacts', { replace: true });
-//     } catch (error) {
-//       console.error('Login failed:', error);
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <label>
-//         Email
-//         <input type="email" name="email" />
-//       </label>
-
-//       <label>
-//         Password
-//         <input type="password" name="password" />
-//       </label>
-
-//       {/* <button type="submit">Log In</button> */}
-//       <Button variant="contained" type="submit">
-//         Log In
-//       </Button>
-//     </form>
-//   );
-// };
-
-// export default LoginForm;

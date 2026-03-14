@@ -1,14 +1,26 @@
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../hooks';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 
 const Home = () => {
   const { isLoggedIn } = useAuth();
   return (
     <>
       {isLoggedIn ? (
-        <Box>
-          <h1>Phonebook welcome page</h1>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'left',
+            alignItems: 'center',
+            minHeight: 'calc(100vh - 85.98px)',
+          }}
+        >
+          <Typography
+            variant="h1"
+            sx={{ color: 'rgb(82, 38, 0)', fontSize: '87px' }}
+          >
+            Phonebook welcome page
+          </Typography>
         </Box>
       ) : (
         <Box
