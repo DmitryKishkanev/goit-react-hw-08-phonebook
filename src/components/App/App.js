@@ -1,12 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { lazy, useEffect } from 'react';
-// import { Route, Routes, NavLink } from 'react-router-dom';
 import { Route, Routes, Navigate } from 'react-router-dom';
-// import ContactForm from 'components/ContactForm';
-// import Filter from 'components/Filter';
-// import ContactList from 'components/ContactList';
-// import { Container } from 'components/App/App.styled';
-// import { fetchContacts } from '../../redux/phonebook';
 import { refreshCurrentUser } from '../../redux/auth';
 import { useAuth } from '../../hooks';
 import { PrivateRoute } from '../PrivateRoute';

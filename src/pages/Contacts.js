@@ -87,7 +87,11 @@ const Contacts = () => {
       </Box>
 
       {/* В <Outlet /> рендерятся вложенные маршруты - оборачиваем его в Suspense для асинхронной загрузки */}
-      <Suspense fallback={<div>LOADING SUBPAGE...</div>}>
+      <Suspense
+        fallback={
+          <div style={{ alignSelf: 'flex-start' }}>LOADING SUBPAGE...</div>
+        }
+      >
         <Box
           sx={{
             display: 'flex',

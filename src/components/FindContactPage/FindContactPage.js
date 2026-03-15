@@ -35,7 +35,7 @@ export const FindContactPage = () => {
       <FindContactPageWrapper>
         <BackLink to={backLinkLokatonRef.current}>Back</BackLink>
         <FindContactPageBox>
-          <FindContactPageTitle variant="h5">Contact</FindContactPageTitle>
+          <FindContactPageTitle variant="h5">Contacts</FindContactPageTitle>
           <Filter />
           <ContactList />
         </FindContactPageBox>
